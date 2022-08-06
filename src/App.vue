@@ -1,7 +1,19 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import NavBar from "./components/NavBar/NavBar.vue";
 </script>
 
 <template>
- <RouterView />
+
+  <header>
+    <NavBar />
+  </header>
+
+  <main>
+    <RouterView />
+  </main>
+  
+  <footer>
+
+  </footer>
 </template>
