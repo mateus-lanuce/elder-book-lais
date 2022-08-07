@@ -1,5 +1,5 @@
 <template>
-  <div class="hidden relative lg:block">
+  <div class="hidden relative lg:block xl:ml-3">
     <div
       class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
     >
@@ -21,7 +21,7 @@
     <input
       type="text"
       id="search-navbar"
-      class="h-7 pr-0.5 xl:pr-20 lg:w-20 xl:w-full text-themePurple bg-themePurple/10 rounded-full border border-none sm:text-sm focus:ring-blue-500 focus:border-blue-500"
+      class="block p-2 pl-10 h-7 xl:pr-20 lg:w-20 xl:w-full text-themePurple bg-themePurple/10 rounded-full border border-none sm:text-sm focus:ring-blue-500 focus:border-blue-500"
     />
   </div>
 </template>
