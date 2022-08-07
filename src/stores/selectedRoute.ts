@@ -6,6 +6,11 @@ export const useSelectedRoute = defineStore({
     Selected: "/"
   }),
   actions: {
+    
+    /**
+     * Modifica e salva a rota que está
+     * @param Route 
+     */
     change(Route: string) {
       this.Selected = Route;
     }
