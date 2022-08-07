@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import LogoElder from "../icons/logo-elder.vue";
 import Search from "./Search.vue";
-import NavigationLinks from "./navigationLinks.vue";
+import NavigationLinks from "./NavigationLinks.vue";
 import NavButton from "./NavButton.vue";
 </script>
 
