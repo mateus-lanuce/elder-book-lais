@@ -1,49 +1,74 @@
+<script lang="ts" setup>
+import { useRouter } from "vue-router";
+import { useSelectedRoute }from "../../stores/selectedRoute"
+
+const router = useRouter()
+const SelectedRoute = useSelectedRoute()
+
+console.log(SelectedRoute.Selected)
+
+function changeRoute(route: string) {
+
+  route = "/" + route;
+
+  router.push(route);
+
+  SelectedRoute.change(route);
+
+}
+</script>
+
 <template>
-  <ul
-    class="flex space-x-4 xl:space-x-10 md:text-sm xl:text-md font-bold"
-  >
+  <ul class="flex space-x-4 xl:space-x-10 md:text-sm xl:text-md font-bold">
     <li>
-      <a
-        href="#"
-        class="text-themeGray-dark md:bg-transparent md:text-themePurple md:p-0"
+      <button
+        @click="changeRoute(``)"
+        class="text-themeGray-dark md:bg-transparent md:hover:text-themePurple md:p-0"
         aria-current="page"
-        >Início</a
+        :class="SelectedRoute"
       >
+        Início
+      </button>
     </li>
     <li>
-      <a
-        href="#"
+      <button
+        @click="changeRoute(``)"
         class="text-themeGray-dark md:hover:bg-transparent md:hover:text-themePurple md:p-0"
-        >Sobre Nós</a
       >
+        Sobre Nós
+      </button>
     </li>
     <li>
-      <a
-        href="#"
+      <button
+        @click="changeRoute(`cursos`)"
         class="text-themeGray-dark rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-themePurple md:p-0"
-        >Cursos</a
       >
+        Cursos
+      </button>
     </li>
     <li>
-      <a
-        href="#"
+      <button
+        @click="changeRoute(`parceiros`)"
         class="text-themeGray-dark rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-themePurple md:p-0"
-        >Parceiros</a
       >
+        Parceiros
+      </button>
     </li>
     <li>
-      <a
-        href="#"
+      <button
+        @click="changeRoute(`transparencia`)"
         class="text-themeGray-dark rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-themePurple md:p-0"
-        >Transparência</a
       >
+        Transparência
+      </button>
     </li>
     <li>
-      <a
-        href="#"
+      <button
+        @click="changeRoute(``)"
         class="text-themeGray-dark rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-themePurple md:p-0"
-        >Contato</a
       >
+        Contato
+      </button>
     </li>
   </ul>
 </template>
