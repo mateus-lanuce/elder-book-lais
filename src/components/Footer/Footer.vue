@@ -20,7 +20,7 @@ function changeRoute(route: string) {
 </script>
 
 <template>
-  <div class="h-80">
+  <div class="h-80 relative">
     <!-- green bar -->
     <div class="static bottom-0 w-full h-52 bg-themeGreen">
       <div class="h-full flex flex-col items-center justify-around py-6">

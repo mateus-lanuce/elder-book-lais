@@ -21,7 +21,7 @@
     <input
       type="text"
       id="search-navbar"
-      class="block p-2 pl-10 h-7 xl:pr-20 lg:w-20 xl:w-full text-themePurple bg-themePurple/10 rounded-full border border-none sm:text-sm focus:ring-blue-500 focus:border-blue-500"
+      class="block p-2 pl-10 h-7 xl:pr-5 2xl:pr-20 lg:w-10 xl:w-full text-themePurple bg-themePurple/10 rounded-full border border-none sm:text-sm focus:ring-blue-500 focus:border-blue-500"
     />
   </div>
 </template>

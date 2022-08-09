@@ -10,11 +10,11 @@ import Footer from "./components/Footer/Footer.vue";
     <NavBar /> 
   </header>
 
-  <main class="h-full">
-    <RouterView />
-  </main>
-  
-  <footer>
-    <Footer />
-  </footer>
+      <main class="pt-12">
+        <RouterView />
+      </main>
+    
+    <footer>
+      <Footer />
+    </footer>
 </template>
