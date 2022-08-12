@@ -80,22 +80,22 @@ watchEffect(async () => {
           <!-- cards -->
           <div
             v-for="course of courses"
-            :key="course.id"
+            :key="course['id']"
             class="flex items-center justify-around bg-cardGray my-5 rounded-lg"
           >
             <!-- image and text -->
             <div class="flex flex-row items-center space-x-3 p-3">
               <img
-                v-bind:src="course.capa"
-                v-bind:alt="course.titulo"
+                v-bind:src="course['capa']"
+                v-bind:alt="course['titulo']"
                 class="h-28 w-32 object-cover rounded-lg"
               />
               <div class="space-y-4 w-96">
                 <p class="text-themeGray-dark font-semibold text-xl">
-                  {{ course.titulo }}
+                  {{ course['titulo'] }}
                 </p>
                 <p class="text-themeGreen font-semibold text-xs w-3/4">
-                  {{ course.parceiros }}
+                  {{ course['parceiros'] }}
                 </p>
               </div>
             </div>
@@ -113,8 +113,8 @@ watchEffect(async () => {
               <div class="flex items-center space-x-1">
 
                 <template v-for="index in 5" :key="index">
-                  <StarIcon class="w-5 h-5" v-if="orderStars(course.avaliacao, index) === 0"/>
-                  <NoBgStartIcon class="w-5 h-5" v-else-if="orderStars(course.avaliacao, index) === 1"/>
+                  <StarIcon class="w-5 h-5" v-if="orderStars(course['avaliacao'], index) === 0"/>
+                  <NoBgStartIcon class="w-5 h-5" v-else-if="orderStars(course['avaliacao'], index) === 1"/>
                   <HalfStarIcon class="w-5 h-5" v-else/>
                 </template>
                 

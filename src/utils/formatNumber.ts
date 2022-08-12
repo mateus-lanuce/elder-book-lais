@@ -1,4 +1,4 @@
-const formatNumber = (Number: number | string): string => {
+const formatNumber = (Number: number | any): string => {
   return new Intl.NumberFormat().format(Number);
 };
 
