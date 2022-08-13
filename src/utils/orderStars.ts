@@ -10,8 +10,6 @@
 const orderStars = (evaluation: number, index: number): number => {
   const fractionalPart = Math.abs(evaluation) - Math.floor(evaluation);
 
-    console.log("floor:", Math.round(evaluation))
-
   if (evaluation > (index - 0.03)) {
     return 0;
   } else {
