@@ -40,7 +40,7 @@ function changeRoute(route: string) {
     </li>
     <li>
       <button
-        @click="changeRoute(`cursos`)"
+        @click="changeRoute(`cursos/modulos`)"
         class="text-themeGray-dark rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-themePurple md:p-0"
       >
         Cursos

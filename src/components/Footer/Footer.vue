@@ -62,7 +62,7 @@ function changeRoute(route: string) {
                 <button @click="changeRoute(``)">Sobre Nós</button>
               </li>
               <li>
-                <button @click="changeRoute(`cursos`)">Cursos</button>
+                <button @click="changeRoute(`cursos/modulos`)">Cursos</button>
               </li>
               <li>
                 <button @click="changeRoute(`parceiros`)">Parceiros</button>

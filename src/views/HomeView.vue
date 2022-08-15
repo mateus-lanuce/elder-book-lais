@@ -42,6 +42,7 @@ watchEffect(async () => {
 
     <!-- main cards -->
     <div class="bg-white flex flex-col items-center justify-around">
+      
       <!-- modules education container cards -->
       <div class="flex flex-col items-center justify-around pt-10 w-3/4">
         <p class="text-themeGreen text-3xl font-semibold">
