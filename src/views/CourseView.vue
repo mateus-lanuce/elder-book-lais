@@ -2,7 +2,7 @@
 import api from "@/utils/api";
 import formatNumber from "@/utils/formatNumber";
 import orderStars from "@/utils/orderStars";
-import { onBeforeMount, onMounted, ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 import WatchIcon from "../components/icons/watch-icon.vue";
 import PersonIcon from "../components/icons/person-icon.vue";
