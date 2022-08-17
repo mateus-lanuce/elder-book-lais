@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import api from "@/utils/api";
-import { onBeforeMount, ref, watchEffect } from "vue";
+import { computed, onBeforeMount, ref, watchEffect } from "vue";
 import PaginationComponent from "../components/PaginationComponent.vue";
 import PersonIcon from "../components/icons/person-icon.vue";
 import formatNumber from "@/utils/formatNumber";
+import estados from '../utils/jsonStatesBrasil';
 import PieChart from "../components/pieChart.vue";
+import BrasilGraph from "../components/brasilGraph.vue";
+import { useRoute } from "vue-router";
 
 const transparency = ref({});
+const SelectedState = ref({});
+const nameState = ref<string | undefined>("Ceará");
+
+const route = useRoute();
 
 const circleColors = ["bg-white", "bg-themeGreen", "bg-themePurple", "bg-themeGray-dark"];
 
@@ -14,9 +21,24 @@ onBeforeMount(async () => {
   const response = await await api.get("transparecia");
 
   transparency.value = response.data;
+  SelectedState.value = response.data.usuarios_por_estado[0];
+  changeState(response.data.usuarios_por_estado[0].estados);
 
   console.log(response.data);
 });
+
+function changeName(sigla: string) {
+  return estados.UF.find(estado => estado.sigla == sigla)?.nome;
+}
+
+function changeState(event: string) {
+  console.log(event, route.params);
+
+  SelectedState.value = transparency.value['usuarios_por_estado'].find(state => state.estados == event);
+  nameState.value = changeName(event);
+}
+
+
 </script>
 
 <template>
@@ -37,7 +59,7 @@ onBeforeMount(async () => {
 
       <!-- container grid -->
       <div
-        class="grid grid-cols-2 gap-8 justify-items-center w-full py-10"
+        class="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-items-center w-full py-10"
       >
         <!-- informations -->
         <div class="col-span-2 w-full bg-cardGray rounded-lg py-7 shadow-lg">
@@ -155,21 +177,31 @@ onBeforeMount(async () => {
         </div>
 
         <!-- map -->
-        <div class="flex flex-col items-center justify-around bg-cardGray w-full rounded-lg shadow-lg">
+        <div class="flex flex-col items-center justify-around space-y-5 bg-cardGray w-full rounded-lg shadow-lg p-10">
 
-          <div class="flex flex-col items-center">
+          <div class="flex flex-col items-center space-y-3">
             <p class="text-themeGreen text-2xl font-semibold">Usuários por Estado</p>
-            <PieChart />
+            <BrasilGraph @br-state="changeState($event)"/>
           </div>
 
           <!-- legend -->
           <div class="flex flex-col items-start space-y-2">
-            <div v-for="(usersCurse, index) in transparency.usuarios_por_curso" :key="index" class="flex flex-row items-center space-x-2">
-              <div class="h-5 w-5 rounded-full" :class="circleColors[index]"/>
-              <p class="text-themeGray-dark font-bold text-base">
-                {{ usersCurse["curso"] }}: {{ formatNumber(usersCurse["usuarios"]) }} 
-              </p>
+            
+            <div class="mx-auto">
+              <p class="text-themeGreen font-semibold text-base text-center">{{ nameState }}</p>
             </div>
+
+            <div>
+              <div class="flex flex-row items-center space-x-2">
+                <div class="h-5 w-5 rounded-full bg-themePurple" />
+                <p class="text-themeGray-dark font-bold text-base">Usuários Totais no Estado: {{ formatNumber(SelectedState.usuarios_totais) }}</p>
+              </div>
+              <div class="flex flex-row items-center space-x-2">
+                <div class="h-5 w-5 rounded-full bg-themeGray-dark" />
+                <p class="text-themeGray-dark font-bold text-base">Usuários com direito a Certificação no Estado: {{ formatNumber(SelectedState.direito_certificacao) }}</p>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
