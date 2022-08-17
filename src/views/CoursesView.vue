@@ -15,10 +15,11 @@ import ButtonComponent from "../components/ButtonComponent.vue";
 import PaginationComponent from "../components/PaginationComponent.vue";
 import { usePaginationStore } from "@/stores/paginationStore";
 import { useRouter } from "vue-router";
+import type { Courses } from "@/utils/types";
 
 const selectedRoute = useSelectedRoute();
 const paginationStore = usePaginationStore();
-const courses = ref([]);
+const courses = ref<Courses | null>();
 const selectOrder = ref("Covid 19");
 const router = useRouter();
 
@@ -158,26 +159,26 @@ async function clickCourse(id: number) {
           <div class="grid grid-cols-3 gap-6">
             <div
               v-for="course of courses"
-              :key="course['id']"
+              :key="course.id"
               class="flex flex-col justify-between"
             >
               <!-- image and text -->
               <div class="w-80 flex flex-col space-y-2">
                 <img
-                  v-bind:src="course['capa']"
-                  v-bind:alt="course['titulo']"
-                  v-bind:title="course['titulo']"
+                  v-bind:src="course.capa"
+                  v-bind:alt="course.titulo"
+                  v-bind:title="course.titulo"
                   class="h-52 w-80 object-cover rounded-lg"
                 />
                 <div class="flex flex-col space-y-1">
                   <p
                     class="text-themeGray-dark font-semibold text-xl line-clamp-2"
-                    v-bind:title="course['titulo']"
+                    v-bind:title="course.titulo"
                   >
-                    {{ course["titulo"] }}
+                    {{ course.titulo }}
                   </p>
                   <p class="text-themeGreen font-semibold text-xs truncate">
-                    {{ course["parceiros"] }}
+                    {{ course.parceiros }}
                   </p>
                 </div>
               </div>
@@ -190,12 +191,12 @@ async function clickCourse(id: number) {
                     <div class="flex items-center space-x-1">
                       <PersonIcon class="h-6 w-5" />
                       <p class="text-themeGray-dark">
-                        {{ formatNumber(course["matriculados"]) }}
+                        {{ formatNumber(course.matriculados) }}
                       </p>
                     </div>
                     <div class="flex items-center space-x-1">
                       <WatchIcon class="h-4 w-4" />
-                      <p>{{ course["duracao"] }}</p>
+                      <p>{{ course.duracao }}</p>
                     </div>
                   </div>
 
@@ -203,18 +204,18 @@ async function clickCourse(id: number) {
                     <template v-for="index in 5" :key="index">
                       <StarIcon
                         class="w-5 h-5"
-                        v-if="orderStars(course['avaliacao'], index) === 0"
+                        v-if="orderStars(parseFloat(course.avaliacao), index) === 0"
                       />
                       <NoBgStartIcon
                         class="w-5 h-5"
-                        v-else-if="orderStars(course['avaliacao'], index) === 1"
+                        v-else-if="orderStars(parseFloat(course.avaliacao), index) === 1"
                       />
                       <HalfStarIcon class="w-5 h-5" v-else />
                     </template>
 
                     <p class="px-1 text-themeGray-dark">
                       {{
-                        formatNumber(parseFloat(course["avaliacao"]).toFixed(1))
+                        formatNumber(parseFloat(course.avaliacao).toFixed(1))
                       }}
                     </p>
                   </div>
@@ -224,7 +225,7 @@ async function clickCourse(id: number) {
                 <p
                   class="w-80 text-base font-medium text-themeGray-dark line-clamp-4"
                 >
-                  {{ course["resumo"] }}
+                  {{ course.resumo }}
                 </p>
               </div>
 
@@ -232,7 +233,7 @@ async function clickCourse(id: number) {
               <div class="text-end">
                 <button
                   class="font-semibold text-lg text-themePurple"
-                  @click="clickCourse(course['id'])"
+                  @click="clickCourse(course.id)"
                 >
                   Ver curso
                 </button>

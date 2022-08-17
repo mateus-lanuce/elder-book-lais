@@ -8,8 +8,9 @@ import {
   ArcElement,
   CategoryScale,
 } from "chart.js";
-import { computed, onMounted, ref, watchEffect } from "vue";
+import { computed, onMounted, ref, watchEffect, type PropType } from "vue";
 import api from "@/utils/api";
+import type { TChartData } from "vue-chartjs/dist/types";
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
 
@@ -17,7 +18,15 @@ type usuarios_por_curso = {
   curso: string;
   usuarios: number;
 };
-const Data = ref(null);
+
+const Data = ref<TChartData<"pie", number[], unknown>>({
+      datasets: [
+        {
+          data: [1 ,2,3,4],
+        },
+      ],
+    });
+
 const loaded = ref(false);
 
 const chartId = "pie_chart";
@@ -27,11 +36,6 @@ const width = 400;
 const height = 400;
 
 const cssClasses = "py-5";
-
-const styles = {
-  type: Object as PropType<Partial<CSSStyleDeclaration>>,
-  default: () => {},
-};
 
 onMounted(async () => {
   const response = await await api.get("transparecia");
@@ -78,7 +82,6 @@ const chartOptions = {
       :width="width"
       :height="height"
       :css-classes="cssClasses"
-      :style="styles"
     />
   </div>
 </template>

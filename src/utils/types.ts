@@ -39,3 +39,28 @@ export type StateObjectType = {
   usuarios_totais: number;
   direito_certificacao: number;
 };
+
+export type Courses = [{
+  id: number,
+  cateroria: string,
+  capa: string,
+  titulo: string,
+  parceiros: string,
+  resumo: string,
+  duracao: string,
+  matriculados: number;
+  criado_em: string,
+  avaliacao: string,
+  numero_avaliacoes: number;
+  sobre: string,
+  objetivo_especifico: string,
+  objetivo_geral: string,
+  recursos_educacionais: string
+  conteudo: string[];
+  creditos: [
+    {
+      capa: string
+      titulo: string
+    }
+  ];
+}];
