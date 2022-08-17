@@ -5,16 +5,15 @@ import Footer from "./components/Footer/Footer.vue";
 </script>
 
 <template>
-
   <header>
-    <NavBar /> 
+    <NavBar />
   </header>
 
-      <main class="pt-12">
-        <RouterView />
-      </main>
-    
-    <footer>
-      <Footer />
-    </footer>
+  <main class="pt-12">
+    <RouterView />
+  </main>
+
+  <footer>
+    <Footer />
+  </footer>
 </template>

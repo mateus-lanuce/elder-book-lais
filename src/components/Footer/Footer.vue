@@ -16,6 +16,8 @@ function changeRoute(route: string) {
   router.push(route);
 
   SelectedRoute.change(route);
+
+  window.scroll(0, 0);
 }
 </script>
 
@@ -36,25 +38,25 @@ function changeRoute(route: string) {
     <!-- gray bar -->
     <div class="static bottom-0 w-full h-80 bg-themeGray-dark">
       <div class="h-full w-full flex flex-col items-center justify-around">
-        
         <!-- informations -->
         <div class="grid grid-cols-5 gap-4 justify-items-center mt-auto">
           <div></div>
-          <div class="flex flex-col h-full items-center ">
+          <div class="flex flex-col h-full items-center">
             <LogoLais class="h-9" />
-            <p class="pt-4 text-sm align-middle text-center text-white font-light w-3/4">
+            <p
+              class="pt-4 text-sm align-middle text-center text-white font-light w-3/4"
+            >
               Laboratório de Inovação Tecnológica em Saúde.
             </p>
           </div>
 
           <div class="text-white w-100 flex flex-col items-center">
             <p class="text-xl font-bold text-center">Links Úteis</p>
-            <ul class="font-light text-sm flex flex-col items-center justify-around space-y-2 pt-2">
+            <ul
+              class="font-light text-sm flex flex-col items-center justify-around space-y-2 pt-2"
+            >
               <li>
-                <button
-                  @click="changeRoute(``)"
-                  aria-current="page"
-                >
+                <button @click="changeRoute(``)" aria-current="page">
                   Início
                 </button>
               </li>
@@ -68,9 +70,7 @@ function changeRoute(route: string) {
                 <button @click="changeRoute(`parceiros`)">Parceiros</button>
               </li>
               <li>
-                <button
-                  @click="changeRoute(`transparencia`)"
-                >
+                <button @click="changeRoute(`transparencia`)">
                   Transparência
                 </button>
               </li>
@@ -79,7 +79,9 @@ function changeRoute(route: string) {
 
           <div class="">
             <p class="text-xl text-white font-bold">Redes sociais</p>
-            <ul class="font-light text-sm flex flex-row items-center justify-around pt-3">
+            <ul
+              class="font-light text-sm flex flex-row items-center justify-around pt-3"
+            >
               <li>
                 <LogoFacebook />
               </li>

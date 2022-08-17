@@ -10,11 +10,11 @@
 const orderStars = (evaluation: number, index: number): number => {
   const fractionalPart = Math.abs(evaluation) - Math.floor(evaluation);
 
-  if (evaluation > (index - 0.03)) {
+  if (evaluation > index - 0.03) {
     return 0;
   } else {
     //se for maior verificar se deve ser vazio ou meio
-    return (index - evaluation > 0 && index - evaluation < 1) ? -1 : 1;
+    return index - evaluation > 0 && index - evaluation < 1 ? -1 : 1;
   }
 };
 

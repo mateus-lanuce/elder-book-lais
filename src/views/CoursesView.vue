@@ -25,7 +25,12 @@ const router = useRouter();
 //altera os valores dos cursos exibidos na tela
 watchEffect(async () => {
   const response = await api.get("cursos", {
-    params: { _limit: 6, cateroria: selectOrder.value, _order: "desc", _page: paginationStore.current_page },
+    params: {
+      _limit: 6,
+      cateroria: selectOrder.value,
+      _order: "desc",
+      _page: paginationStore.current_page,
+    },
   });
   courses.value = response.data;
   paginationStore.courses = response.data;
@@ -42,9 +47,8 @@ watchEffect(async () => {
 });
 
 async function clickCourse(id: number) {
-  router.push(`/cursos/modulos/${id}`)
+  router.push(`/cursos/modulos/${id}`);
 }
-
 </script>
 
 <template>
@@ -53,7 +57,12 @@ async function clickCourse(id: number) {
     <div class="flex flex-col items-center justify-around space-y-6">
       <!-- p routes -->
       <div class="container">
-        <div class="flex flex-row text-sm font-semibold text-[#808080] leading-4">Início / Cursos / <div class="text-black">Módulos</div></div>
+        <div
+          class="flex flex-row text-sm font-semibold text-[#808080] leading-4"
+        >
+          Início / Cursos /
+          <div class="text-black">Módulos</div>
+        </div>
       </div>
 
       <p class="text-themeGreen text-3xl font-semibold">Módulos Educacionais</p>
@@ -221,7 +230,10 @@ async function clickCourse(id: number) {
 
               <!-- button -->
               <div class="text-end">
-                <button class="font-semibold text-lg text-themePurple" @click="clickCourse(course['id'])">
+                <button
+                  class="font-semibold text-lg text-themePurple"
+                  @click="clickCourse(course['id'])"
+                >
                   Ver curso
                 </button>
               </div>

@@ -13,13 +13,12 @@ import api from "@/utils/api";
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
 
-
 type usuarios_por_curso = {
-    curso: string,
-    usuarios: number
-}
+  curso: string;
+  usuarios: number;
+};
 const Data = ref(null);
-const loaded = ref(false)
+const loaded = ref(false);
 
 const chartId = "pie_chart";
 
@@ -40,21 +39,23 @@ onMounted(async () => {
   let formated = response.data.usuarios_por_curso;
 
   formated = {
-    labels: formated.map((userCurse: usuarios_por_curso) => userCurse.curso ),
+    labels: formated.map((userCurse: usuarios_por_curso) => userCurse.curso),
     datasets: [
-        {
-            backgroundColor: ["#FFFFFF", "#7DC143", "#D16FFF", "#2F2E41"],
-            data: formated.map((userCurse: usuarios_por_curso) => userCurse.usuarios )
-        }
-    ]
-  }
+      {
+        backgroundColor: ["#FFFFFF", "#7DC143", "#D16FFF", "#2F2E41"],
+        data: formated.map(
+          (userCurse: usuarios_por_curso) => userCurse.usuarios
+        ),
+      },
+    ],
+  };
 
   Data.value = formated;
 
   loaded.value = true;
 
   console.log(formated);
-})
+});
 
 const chartOptions = {
   responsive: true,

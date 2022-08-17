@@ -18,18 +18,25 @@ import ButtonComponent from "./ButtonComponent.vue";
         >
           <span
             class="absolute flex flex-col items-center space-y-4 font-semibold w-full -translate-x-1/2 -translate-y-1/2 top-1/4 left-1/2 sm:text-3xl dark:text-gray-800"
+          >
+            <p
+              class="text-center xl:text-5xl md:text-3xl xl:pt-5 md:pt-10 text-themeGreen"
             >
-            <p class="text-center xl:text-5xl md:text-3xl xl:pt-5 md:pt-10 text-themeGreen">Especialização PEPSUS</p>
-            <p class="inline-block align-bottom pb-5 w-full xl:text-2xl md:text-2xl text-center text-themeGray-dark">Conheça o curso de Especialização em Saúde da Família</p>
+              Especialização PEPSUS
+            </p>
+            <p
+              class="inline-block align-bottom pb-5 w-full xl:text-2xl md:text-2xl text-center text-themeGray-dark"
+            >
+              Conheça o curso de Especialização em Saúde da Família
+            </p>
             <ButtonComponent class="text-3xl">Acesse</ButtonComponent>
-        </span>
+          </span>
           <img
             src="../assets/hover-image.svg"
-            class="absolute block xl:w-4/6 md:w-3/4 xl:pt-20  -translate-x-1/2 -translate-y-3/4 top-3/4 left-1/2"
+            class="absolute block xl:w-4/6 md:w-3/4 xl:pt-20 -translate-x-1/2 -translate-y-3/4 top-3/4 left-1/2"
             alt="..."
           />
         </div>
-        
       </div>
       <!-- Slider indicators -->
       <div

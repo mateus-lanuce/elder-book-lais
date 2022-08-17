@@ -17,7 +17,6 @@ import NavButton from "./NavButton.vue";
 
       <!-- nagivation links -->
       <div class="flex items-center lg:justify-end xl:justify-between">
-
         <div class="flex pr-4">
           <NavigationLinks />
         </div>

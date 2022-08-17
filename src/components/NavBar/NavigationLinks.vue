@@ -1,20 +1,18 @@
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
-import { useSelectedRoute }from "../../stores/selectedRoute"
+import { useSelectedRoute } from "../../stores/selectedRoute";
 
-const router = useRouter()
-const SelectedRoute = useSelectedRoute()
+const router = useRouter();
+const SelectedRoute = useSelectedRoute();
 
-console.log(SelectedRoute.Selected)
+console.log(SelectedRoute.Selected);
 
 function changeRoute(route: string) {
-
   route = "/" + route;
 
   router.push(route);
 
   SelectedRoute.change(route);
-
 }
 </script>
 

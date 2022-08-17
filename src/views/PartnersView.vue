@@ -75,7 +75,9 @@ onBeforeMount(async () => {
                   v-bind:title="partner['titulo']"
                   class="h-52 w-80 object-scale-down rounded-lg"
                 />
-                <div class="flex flex-col space-y-1 border-t-4 border-themeGreen">
+                <div
+                  class="flex flex-col space-y-1 border-t-4 border-themeGreen"
+                >
                   <p
                     class="pt-4 text-themeGray-dark font-semibold text-xl text-center line-clamp-3"
                     v-bind:title="partner['titulo']"

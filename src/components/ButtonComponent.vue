@@ -2,25 +2,21 @@
 import { useRouter } from "vue-router";
 import { useSelectedRoute } from "@/stores/selectedRoute";
 
-
 const props = defineProps({
   invert: Boolean,
-  route: { type: String, required: false }
+  route: { type: String, required: false },
 });
-
 
 const router = useRouter();
 const SelectedRoute = useSelectedRoute();
 
 function changeRoute(route: string) {
-    route = "/" + route;
+  route = "/" + route;
 
-  
-    router.push(route);
-  
-    SelectedRoute.change(route);
-  }
+  router.push(route);
 
+  SelectedRoute.change(route);
+}
 </script>
 
 <template>

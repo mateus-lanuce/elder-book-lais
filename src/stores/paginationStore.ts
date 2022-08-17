@@ -19,7 +19,7 @@ export const usePaginationStore = defineStore({
       return Math.round(this.paginationLength / splitValue);
     },
     changePage(page: number) {
-        this.current_page = page;
-    }
+      this.current_page = page;
+    },
   },
 });

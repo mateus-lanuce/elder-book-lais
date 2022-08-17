@@ -2,7 +2,6 @@
 defineProps({
   invert: Boolean,
 });
-
 </script>
 
 <template>
