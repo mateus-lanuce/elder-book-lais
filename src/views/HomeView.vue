@@ -124,12 +124,12 @@ watchEffect(async () => {
 
               <!-- button -->
 
-              <ButtonComponent class="w-fit xl:px-6" >Ver Módulo</ButtonComponent>
+              <ButtonComponent class="w-fit xl:px-6" :route="`cursos/modulos/${course['id']}`">Ver Módulo</ButtonComponent>
             </div>
           </div>
         </div>
 
-        <ButtonComponent class="my-5 w-64 h-10 text-xl" route="cursos">Ver Mais</ButtonComponent>
+        <ButtonComponent class="my-5 w-64 h-10 text-xl" route="cursos/modulos">Ver Mais</ButtonComponent>
       </div>
 
       <!-- parterns -->
