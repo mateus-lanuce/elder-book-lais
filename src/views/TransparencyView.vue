@@ -4,7 +4,7 @@ import { computed, onBeforeMount, ref, watchEffect } from "vue";
 import PaginationComponent from "../components/PaginationComponent.vue";
 import PersonIcon from "../components/icons/person-icon.vue";
 import formatNumber from "@/utils/formatNumber";
-import estados from '../utils/jsonStatesBrasil';
+import estados from "../utils/jsonStatesBrasil";
 import PieChart from "../components/pieChart.vue";
 import BrasilGraph from "../components/brasilGraph.vue";
 import { useRoute } from "vue-router";
@@ -15,7 +15,12 @@ const nameState = ref<string | undefined>("Ceará");
 
 const route = useRoute();
 
-const circleColors = ["bg-white", "bg-themeGreen", "bg-themePurple", "bg-themeGray-dark"];
+const circleColors = [
+  "bg-white",
+  "bg-themeGreen",
+  "bg-themePurple",
+  "bg-themeGray-dark",
+];
 
 onBeforeMount(async () => {
   const response = await await api.get("transparecia");
@@ -28,17 +33,17 @@ onBeforeMount(async () => {
 });
 
 function changeName(sigla: string) {
-  return estados.UF.find(estado => estado.sigla == sigla)?.nome;
+  return estados.UF.find((estado) => estado.sigla == sigla)?.nome;
 }
 
 function changeState(event: string) {
   console.log(event, route.params);
 
-  SelectedState.value = transparency.value['usuarios_por_estado'].find(state => state.estados == event);
+  SelectedState.value = transparency.value["usuarios_por_estado"].find(
+    (state) => state.estados == event
+  );
   nameState.value = changeName(event);
 }
-
-
 </script>
 
 <template>
@@ -158,50 +163,67 @@ function changeState(event: string) {
         </div>
 
         <!-- grafic -->
-        <div class="flex flex-col items-center justify-around bg-cardGray w-full rounded-lg shadow-lg p-5">
-
+        <div
+          class="flex flex-col items-center justify-around bg-cardGray w-full rounded-lg shadow-lg p-5"
+        >
           <div class="flex flex-col items-center">
-            <p class="text-themeGreen text-2xl font-semibold">Usuários por curso</p>
+            <p class="text-themeGreen text-2xl font-semibold">
+              Usuários por curso
+            </p>
             <PieChart />
           </div>
 
           <!-- legend -->
           <div class="flex flex-col items-start space-y-2">
-            <div v-for="(usersCurse, index) in transparency.usuarios_por_curso" :key="index" class="flex flex-row items-center space-x-2">
-              <div class="h-5 w-5 rounded-full" :class="circleColors[index]"/>
+            <div
+              v-for="(usersCurse, index) in transparency.usuarios_por_curso"
+              :key="index"
+              class="flex flex-row items-center space-x-2"
+            >
+              <div class="h-5 w-5 rounded-full" :class="circleColors[index]" />
               <p class="text-themeGray-dark font-bold text-base">
-                {{ usersCurse["curso"] }}: {{ formatNumber(usersCurse["usuarios"]) }} 
+                {{ usersCurse["curso"] }}:
+                {{ formatNumber(usersCurse["usuarios"]) }}
               </p>
             </div>
           </div>
         </div>
 
         <!-- map -->
-        <div class="flex flex-col items-center justify-around space-y-5 bg-cardGray w-full rounded-lg shadow-lg p-10">
-
+        <div
+          class="flex flex-col items-center justify-around space-y-5 bg-cardGray w-full rounded-lg shadow-lg p-10"
+        >
           <div class="flex flex-col items-center space-y-3">
-            <p class="text-themeGreen text-2xl font-semibold">Usuários por Estado</p>
-            <BrasilGraph @br-state="changeState($event)"/>
+            <p class="text-themeGreen text-2xl font-semibold">
+              Usuários por Estado
+            </p>
+            <BrasilGraph @br-state="changeState($event)" />
           </div>
 
           <!-- legend -->
           <div class="flex flex-col items-start space-y-2">
-            
             <div class="mx-auto">
-              <p class="text-themeGreen font-semibold text-base text-center">{{ nameState }}</p>
+              <p class="text-themeGreen font-semibold text-base text-center">
+                {{ nameState }}
+              </p>
             </div>
 
             <div>
               <div class="flex flex-row items-center space-x-2">
                 <div class="h-5 w-5 rounded-full bg-themePurple" />
-                <p class="text-themeGray-dark font-bold text-base">Usuários Totais no Estado: {{ formatNumber(SelectedState.usuarios_totais) }}</p>
+                <p class="text-themeGray-dark font-bold text-base">
+                  Usuários Totais:
+                  {{ formatNumber(SelectedState.usuarios_totais) }}
+                </p>
               </div>
               <div class="flex flex-row items-center space-x-2">
                 <div class="h-5 w-5 rounded-full bg-themeGray-dark" />
-                <p class="text-themeGray-dark font-bold text-base">Usuários com direito a Certificação no Estado: {{ formatNumber(SelectedState.direito_certificacao) }}</p>
+                <p class="text-themeGray-dark font-bold text-base">
+                  Usuários com Direito a Certificação:
+                  {{ formatNumber(SelectedState.direito_certificacao) }}
+                </p>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
