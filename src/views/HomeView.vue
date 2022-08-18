@@ -35,14 +35,16 @@ watchEffect(async () => {
 
 <template>
   <div class="flex flex-col flex-nowrap -mt-12">
-    <div class="flex-1">
+    <div class="flex-1 hidden lg:block">
       <Carousel />
     </div>
 
     <!-- main cards -->
     <div class="bg-white flex flex-col items-center justify-around">
       <!-- modules education container cards -->
-      <div class="flex flex-col items-center justify-around pt-10 w-3/4">
+      <div
+        class="flex flex-col items-center justify-around pt-20 lg:pt-10 md:px-5 lg:px-0 w-full lg:w-11/12 xl:w-3/4"
+      >
         <p class="text-themeGreen text-3xl font-semibold">
           Módulos Educacionais
         </p>
@@ -51,10 +53,10 @@ watchEffect(async () => {
         <div class="container pt-4">
           <!-- orders buttons -->
           <ul
-            class="flex flex-row space-x-7 text-themeGray-dark font-semibold text-lg"
+            class="flex flex-row items-center justify-around md:justify-start px-2 md:px-0 space-x-7 text-themeGray-dark font-semibold text-sm md:text-lg"
           >
             <li
-              class="pb-1 cursor-pointer border-b-4 hover:border-themePurple rounded transition duration-75 ease-in-out delay-75"
+              class="pb-1 text-center cursor-pointer border-b-4 hover:border-themePurple rounded transition duration-75 ease-in-out delay-75"
               :class="
                 selectOrder === 'matriculados'
                   ? 'border-themePurple'
@@ -65,7 +67,7 @@ watchEffect(async () => {
               Mais populares
             </li>
             <li
-              class="pb-1 cursor-pointer border-b-4 hover:border-themePurple rounded transition duration-75 ease-in-out delay-75"
+              class="pb-1 text-center cursor-pointer border-b-4 hover:border-themePurple rounded transition duration-75 ease-in-out delay-75"
               :class="
                 selectOrder === 'avaliacao'
                   ? 'border-themePurple'
@@ -76,7 +78,7 @@ watchEffect(async () => {
               Mais bem avaliados
             </li>
             <li
-              class="cursor-pointer border-b-4 hover:border-themePurple rounded transition duration-75 ease-in-out delay-75"
+              class="pb-1 text-center cursor-pointer border-b-4 hover:border-themePurple rounded transition duration-75 ease-in-out delay-75"
               :class="
                 selectOrder === 'criado_em'
                   ? 'border-themePurple'
@@ -89,104 +91,117 @@ watchEffect(async () => {
           </ul>
 
           <!-- cards -->
-          <div
-            v-for="course of courses"
-            :key="course['id']"
-            class="flex items-center justify-around bg-cardGray my-5 rounded-lg"
-          >
-            <!-- image and text -->
-            <div class="flex flex-row items-center space-x-3 p-3">
-              <img
-                v-bind:src="course['capa']"
-                v-bind:alt="course['titulo']"
-                class="h-28 w-32 object-cover rounded-lg"
-              />
-              <div class="space-y-4 w-96">
-                <p class="text-themeGray-dark font-semibold text-xl">
-                  {{ course["titulo"] }}
-                </p>
-                <p class="text-themeGreen font-semibold text-xs w-3/4">
-                  {{ course["parceiros"] }}
-                </p>
-              </div>
-            </div>
-
-            <!-- informations -->
+          <div class="flex flex-col space-y-5 my-5 px-5 md:px-0">
+            <!-- card -->
             <div
-              class="flex flex-col xl:flex-row xl:items-start lg:items-center justify-evenly w-1/2 h-full lg:space-y-2 xl:space-y-0"
+              v-for="course of courses"
+              :key="course['id']"
+              class="flex flex-col md:flex-row items-center justify-around bg-cardGray rounded-lg"
             >
-              <div class="flex items-center space-x-2">
-                <PersonIcon class="h-6 w-6" />
-                <p>{{ formatNumber(course["matriculados"]) }}</p>
-              </div>
-              <div class="flex items-center space-x-2">
-                <WatchIcon class="h-5 w-5" />
-                <p>{{ course["duracao"] }}</p>
-              </div>
-              <div class="flex items-center space-x-1">
-                <template v-for="index in 5" :key="index">
-                  <StarIcon
-                    class="w-5 h-5"
-                    v-if="orderStars(course['avaliacao'], index) === 0"
-                  />
-                  <NoBgStartIcon
-                    class="w-5 h-5"
-                    v-else-if="orderStars(course['avaliacao'], index) === 1"
-                  />
-                  <HalfStarIcon class="w-5 h-5" v-else />
-                </template>
-
-                <p class="px-1">
-                  {{ formatNumber(parseFloat(course["avaliacao"]).toFixed(1)) }}
-                </p>
-              </div>
-
-              <!-- button -->
-
-              <ButtonComponent
-                class="w-fit xl:px-6"
-                :route="`cursos/modulos/${course['id']}`"
-                >Ver Módulo</ButtonComponent
+              <!-- image and text -->
+              <div
+                class="flex flex-col lg:basis-3/4 xl:basis-auto md:flex-row items-center space-y-3 md:space-y-0 md:space-x-3 p-3"
               >
+                <img
+                  v-bind:src="course['capa']"
+                  v-bind:alt="course['titulo']"
+                  class="h-full w-full md:h-28 md:w-32 object-cover rounded-lg"
+                />
+                <div class="space-y-4 xl:w-96">
+                  <p
+                    class="text-themeGray-dark font-semibold text-xl"
+                  >
+                    {{ course["titulo"] }}
+                  </p>
+                  <p class="text-themeGreen font-semibold text-xs">
+                    {{ course["parceiros"] }}
+                  </p>
+                </div>
+              </div>
+
+              <!-- informations -->
+              <div
+                class="flex md:basis-40 xl:basis-auto flex-row md:flex-col xl:flex-row flex-wrap items-center xl:items-start justify-evenly md:w-1/2 h-full lg:space-y-2 xl:space-y-0"
+              >
+                <div
+                  class="flex basis-1/4 md:basis-auto items-center space-x-2"
+                >
+                  <PersonIcon class="h-6 w-6" />
+                  <p>{{ formatNumber(course["matriculados"]) }}</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <WatchIcon class="h-5 w-5" />
+                  <p>{{ course["duracao"] }}</p>
+                </div>
+                <div
+                  class="flex basis-1/4 md:basis-auto items-center space-x-1"
+                >
+                  <template v-for="index in 5" :key="index">
+                    <StarIcon
+                      class="w-5 h-5"
+                      v-if="orderStars(course['avaliacao'], index) === 0"
+                    />
+                    <NoBgStartIcon
+                      class="w-5 h-5"
+                      v-else-if="orderStars(course['avaliacao'], index) === 1"
+                    />
+                    <HalfStarIcon class="w-5 h-5" v-else />
+                  </template>
+
+                  <p class="px-1">
+                    {{
+                      formatNumber(parseFloat(course["avaliacao"]).toFixed(1))
+                    }}
+                  </p>
+                </div>
+
+                <!-- button -->
+
+                <ButtonComponent
+                  class="w-3/4 md:w-fit xl:px-6 my-4"
+                  :route="`cursos/modulos/${course['id']}`"
+                  >Ver Módulo</ButtonComponent
+                >
+              </div>
             </div>
           </div>
         </div>
 
-        <ButtonComponent class="my-5 w-64 h-10 text-xl" route="cursos/modulos"
-          >Ver Mais</ButtonComponent
-        >
+        <ButtonComponent class="my-5 w-64 h-10 text-xl" route="cursos/modulos">
+          Ver Mais
+        </ButtonComponent>
       </div>
 
       <!-- parterns -->
-      <div class="w-3/4">
+      <div class="w-full xl:w-3/4 lg:w-11/12 px-5 lg:px-0 ">
         <p class="text-themeGreen text-3xl font-semibold mt-10 text-center">
           Parceiros
         </p>
 
         <div
-          class="flex items-start justify-around bg-cardGray my-10 rounded-lg space-x-4 p-4"
+          class="flex flex-col md:flex-row items-center md:items-start justify-around bg-cardGray my-10 rounded-lg space-x-4 space-y-4 md:space-y-0 p-4"
         >
-          <div class="flex flex-col items-center justify-evenly h-full w-1/4">
+          <div class="flex flex-col items-center justify-evenly h-full w-full md:w-1/4">
             <p class="text-2xl font-semibold">Governo do RN</p>
-            <p class="text-xl font-semibold">
+            <p class="text-xl font-semibold text-center md:text-start">
               Governo do Estado do Rio Grande do Norte.
             </p>
           </div>
-          <div class="flex flex-col items-center justify-evenly h-full w-1/4">
+          <div class="flex flex-col items-center justify-evenly h-full w-full md:w-1/4">
             <p class="text-2xl font-semibold">SESAP</p>
-            <p class="text-xl font-semibold">
+            <p class="text-xl font-semibold text-center md:text-start">
               Secretaria de Saúde Pública do Estado do Rio Grande do Norte.
             </p>
           </div>
-          <div class="flex flex-col items-center justify-evenly h-full w-1/4">
+          <div class="flex flex-col items-center justify-evenly h-full w-full md:w-1/4">
             <p class="text-2xl font-semibold">UFRN</p>
-            <p class="text-xl font-semibold">
+            <p class="text-xl font-semibold text-center md:text-start">
               Universidade Federal do Rio Grande do Norte.
             </p>
           </div>
-          <div class="flex flex-col items-center justify-evenly h-full w-1/4">
+          <div class="flex flex-col items-center justify-evenly h-full w-full md:w-1/4">
             <p class="text-2xl font-semibold">HUOL</p>
-            <p class="text-xl font-semibold">
+            <p class="text-xl font-semibold text-center md:text-start">
               Hospital Onofre Lopes: Hospital Universitário da UFRN
               (Universidade Federal do Rio Grande do Norte).
             </p>

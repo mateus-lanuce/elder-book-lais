@@ -168,7 +168,8 @@ async function clickCourse(id: number) {
                   v-bind:src="course.capa"
                   v-bind:alt="course.titulo"
                   v-bind:title="course.titulo"
-                  class="h-52 w-80 object-cover rounded-lg"
+                  class="h-52 w-80 object-cover rounded-lg cursor-pointer"
+                  @click="clickCourse(course.id)"
                 />
                 <div class="flex flex-col space-y-1">
                   <p

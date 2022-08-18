@@ -22,7 +22,7 @@ import NavButton from "./NavButton.vue";
         </div>
 
         <!-- buttons and search-->
-        <div class="flex">
+        <div class="flex flex-row items-center">
           <!-- search -->
           <Search />
 
