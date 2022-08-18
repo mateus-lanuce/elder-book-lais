@@ -29,25 +29,30 @@ onBeforeMount(async () => {
   <div class="flex flex-col items-center flex-nowrap">
     <!-- image and name of course -->
     <div
-      class="w-full h-64 bg-cover relative"
+      class="w-full h-96 md:h-64 bg-cover relative"
       :style="`background-image: url(${course?.capa});`"
     >
+      <!-- pelicula verde -->
       <div
         class="bg-themeGreen w-full absolute h-full mix-blend-multiply"
       ></div>
+
+      <!-- content -->
       <div
-        class="flex flex-col w-3/4 mx-auto justify-evenly h-full absolute left-1 right-1"
+        class="flex flex-col w-full lg:w-3/4 px-3 lg:px-0 mx-auto justify-evenly h-full absolute left-1 right-1"
       >
         <div
           class="flex flex-row flex-nowrap text-base font-semibold text-[#E0E0E0]"
         >
-          Início / Cursos / Módulos /
+          <div class="shrink-0">
+            Início / Cursos / Módulos /
+          </div>
           <div class="text-white truncate">{{ course?.titulo }}</div>
         </div>
-        <p class="text-white text-4xl text-start font-bold">
+        <p class="text-white text-2xl lg:text-2xl xl:text-4xl text-start font-bold">
           {{ course?.titulo }}
         </p>
-        <p class="text-white text-2xl text-start font-semibold">
+        <p class="text-white text-lg xl:text-2xl text-start font-semibold">
           {{ course?.parceiros }}
         </p>
       </div>
@@ -55,14 +60,14 @@ onBeforeMount(async () => {
 
     <!-- main container -->
     <div class="container flex flex-col items-center space-y-5 w-3/4 py-10">
-      <p class="text-themeGreen text-3xl font-semibold">
+      <p class="text-themeGreen text-3xl font-semibold text-center">
         Informações Gerais do Curso
       </p>
 
       <!-- info icons -->
       <div class="w-full">
         <!-- course information icons -->
-        <div class="flex flex-row items-center justify-evenly">
+        <div class="flex flex-row flex-wrap items-center justify-between gap-1">
           <div class="flex items-center space-x-3">
             <WatchIcon class="h-6 w-5" />
             <p class="text-themeGray-dark font-bold">
@@ -84,7 +89,7 @@ onBeforeMount(async () => {
             </p>
           </div>
 
-          <div class="flex items-center space-x-2">
+          <div class="flex items-center space-x-2 md:space-x-3">
             <template v-for="index in 5" :key="index">
               <StarIcon
                 class="w-5 h-5"
