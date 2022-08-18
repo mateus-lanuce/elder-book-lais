@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 import BrasilMap from "./icons/brasilMap.vue";
 
 const emit = defineEmits(["brState"]);
@@ -7,11 +7,28 @@ const emit = defineEmits(["brState"]);
 function handleClick(state: string) {
   emit("brState", state);
 }
+
+const windowWidth = ref(window.innerWidth)
+
+  const onWidthChange = () => windowWidth.value = window.innerWidth
+  onMounted(() => window.addEventListener('resize', onWidthChange))
+  onUnmounted(() => window.removeEventListener('resize', onWidthChange))
+  
+  const type = computed(() => {
+    if (windowWidth.value < 550) return '350px'
+    if (windowWidth.value >= 550 && windowWidth.value < 1200) return '450px'
+    if (windowWidth.value >= 1200) return '450px'
+    return '450px'; // This is an unreachable line, simply to keep eslint happy.
+  })
+
+  const width = computed(() => windowWidth.value)
+
+
 </script>
 
 <template>
   <div class="relative">
-    <div>
+    <div class="">
       <svg
         version="1.1"
         id="svg-map"
@@ -19,7 +36,7 @@ function handleClick(state: string) {
         xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px"
         y="0px"
-        width="450px"
+        :width="type"
         height="460px"
         viewBox="0 0 450 460"
         enable-background="new 0 0 450 460"

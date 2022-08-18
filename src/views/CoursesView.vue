@@ -57,7 +57,7 @@ async function clickCourse(id: number) {
     <!-- modules education container cards -->
     <div class="flex flex-col items-center justify-around space-y-6">
       <!-- p routes -->
-      <div class="md:container">
+      <div class="container px-10 md:px-0">
         <div
           class="flex flex-row text-sm font-semibold text-[#808080] leading-4"
         >

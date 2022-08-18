@@ -8,7 +8,7 @@ import {
   ArcElement,
   CategoryScale,
 } from "chart.js";
-import { computed, onMounted, ref, watchEffect, type PropType } from "vue";
+import { computed, onMounted, onUnmounted, ref, watchEffect, type PropType } from "vue";
 import api from "@/utils/api";
 import type { TChartData } from "vue-chartjs/dist/types";
 
@@ -27,11 +27,24 @@ const Data = ref<TChartData<"pie", number[], unknown>>({
       ],
     });
 
+//resize
+const windowWidth = ref(window.innerWidth)
+
+const onWidthChange = () => windowWidth.value = window.innerWidth
+onMounted(() => window.addEventListener('resize', onWidthChange))
+onUnmounted(() => window.removeEventListener('resize', onWidthChange))
+
+const width = computed(() => {
+  if (windowWidth.value < 550) return 350
+  if (windowWidth.value >= 550 && windowWidth.value < 1200) return 400
+  if (windowWidth.value >= 1200) return 400
+  return 400; // This is an unreachable line, simply to keep eslint happy.
+})
+
+
 const loaded = ref(false);
 
 const chartId = "pie_chart";
-
-const width = 400;
 
 const height = 400;
 
@@ -63,7 +76,7 @@ onMounted(async () => {
 
 const chartOptions = {
   responsive: true,
-  maintainAspectRatio: false,
+  maintainAspectRatio: true,
   plugins: {
     legend: {
       display: false,

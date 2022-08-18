@@ -48,7 +48,7 @@ function changeState(event: string) {
 <template>
   <div class="flex flex-col items-center flex-nowrap mt-5">
     <!-- modules education container cards -->
-    <div class="flex flex-col items-center justify-around space-y-6 w-3/4">
+    <div class="flex flex-col items-center justify-around space-y-6 w-11/12 xl:w-3/4">
       <!-- p routes -->
       <div class="container">
         <div
@@ -66,12 +66,12 @@ function changeState(event: string) {
         class="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-items-center w-full py-10"
       >
         <!-- informations -->
-        <div class="col-span-2 w-full bg-cardGray rounded-lg py-7 shadow-lg">
+        <div class="lg:col-span-2 w-full bg-cardGray rounded-lg py-7 shadow-lg">
           <p class="text-themeGreen font-semibold text-2xl text-center pb-5">
             Dados Gerais
           </p>
           <div class="flex flex-col justify-around space-y-6">
-            <div class="flex flex-row justify-evenly">
+            <div class="flex flex-row flex-wrap lg:flex-nowrap gap-4 md:gap-0 justify-evenly">
               <div class="flex flex-col items-center space-y-2">
                 <div class="flex flex-row space-x-2">
                   <PersonIcon class="h-6 w-6" />
