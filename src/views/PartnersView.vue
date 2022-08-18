@@ -42,7 +42,7 @@ onBeforeMount(async () => {
 <template>
   <div class="flex flex-col items-center flex-nowrap mt-5">
     <!-- modules education container cards -->
-    <div class="flex flex-col items-start justify-around space-y-6">
+    <div class="flex flex-col items-start justify-around space-y-6 w-3/4 md:w-11/12 xl:w-3/4">
       <!-- p routes -->
       <div class="container">
         <div
@@ -61,14 +61,14 @@ onBeforeMount(async () => {
         <PaginationComponent>
           <!-- cards -->
 
-          <div class="grid grid-cols-3 gap-6">
+          <div class="grid md:grid-cols-2  lg:grid-cols-3 gap-6">
             <div
               v-for="partner of partners"
               :key="partner['id']"
-              class="flex flex-col justify-between"
+              class="flex flex-col justify-between w-fit mx-auto"
             >
               <!-- image and text -->
-              <div class="w-80 flex flex-col space-y-2">
+              <div class="w-80 lg:w-72 xl:w-80 flex flex-col space-y-2">
                 <img
                   v-bind:src="partner['capa']"
                   v-bind:alt="partner['titulo']"

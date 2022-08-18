@@ -18,7 +18,7 @@ const paginationStore = usePaginationStore();
     <div class="flex flex-col items-center pb-12 pt-7 space-y-2">
       <!-- balls -->
       <div>
-        <ul class="flex flex-row items-center space-x-3">
+        <ul class="flex flex-row items-center space-x-2 md:space-x-3">
           <li v-for="i in paginationStore.splitPages(6)" :key="i">
             <button
               type="button"
