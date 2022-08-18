@@ -57,7 +57,7 @@ async function clickCourse(id: number) {
     <!-- modules education container cards -->
     <div class="flex flex-col items-center justify-around space-y-6">
       <!-- p routes -->
-      <div class="container">
+      <div class="md:container">
         <div
           class="flex flex-row text-sm font-semibold text-[#808080] leading-4"
         >
@@ -69,10 +69,10 @@ async function clickCourse(id: number) {
       <p class="text-themeGreen text-3xl font-semibold">Módulos Educacionais</p>
 
       <!-- container cards -->
-      <div class="container pt-4">
+      <div class="container pt-4 w-3/4 md:w-11/12 lg:w-full">
         <!-- orders buttons -->
         <ul
-          class="flex flex-row space-x-7 text-themeGray-dark font-semibold text-lg"
+          class="flex flex-row flex-wrap gap-3 lg:gap-0 lg:space-x-7 items-center justify-evenly text-themeGray-dark font-semibold text-lg"
         >
           <li
             class="pb-1 cursor-pointer border-b-4 hover:border-themePurple rounded transition duration-75 ease-in-out delay-75"
@@ -156,11 +156,11 @@ async function clickCourse(id: number) {
         <PaginationComponent>
           <!-- cards -->
 
-          <div class="grid grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-6">
             <div
               v-for="course of courses"
               :key="course.id"
-              class="flex flex-col justify-between"
+              class="flex flex-col justify-between w-fit mx-auto"
             >
               <!-- image and text -->
               <div class="w-80 flex flex-col space-y-2">
@@ -185,7 +185,7 @@ async function clickCourse(id: number) {
               </div>
 
               <!-- informations -->
-              <div class="pt-3">
+              <div class="flex flex-col w-fit pt-3">
                 <!-- course information icons -->
                 <div class="flex items-center justify-between">
                   <div class="flex flex-row space-x-3">

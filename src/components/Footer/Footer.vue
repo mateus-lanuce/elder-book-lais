@@ -17,7 +17,7 @@ function changeRoute(route: string) {
 
   SelectedRoute.change(route);
 
-  window.scroll(0, 0);
+  setTimeout(() => window.scroll(0, 0), 300);
 }
 </script>
 
@@ -28,7 +28,7 @@ function changeRoute(route: string) {
       <div class="h-full flex flex-col items-center justify-around py-6">
         <p class="text-2xl text-white font-semibold">Realização</p>
 
-        <div class="flex flex-row items-center justify-between space-x-20">
+        <div class="flex flex-row items-center justify-between space-x-10 md:space-x-20">
           <LogoLais class="h-12" />
           <LogoUfrn class="h-12" />
         </div>
@@ -39,9 +39,9 @@ function changeRoute(route: string) {
     <div class="static bottom-0 w-full h-80 bg-themeGray-dark">
       <div class="h-full w-full flex flex-col items-center justify-around">
         <!-- informations -->
-        <div class="grid grid-cols-5 gap-4 justify-items-center mt-auto">
-          <div></div>
-          <div class="flex flex-col h-full items-center">
+        <div class="grid grid-cols-3 md:grid-cols-5 gap-4 justify-items-center mt-auto px-2 md:px-0">
+          <div class="hidden md:block"></div>
+          <div class="flex  flex-col h-full items-center">
             <LogoLais class="h-9" />
             <p
               class="pt-4 text-sm align-middle text-center text-white font-light w-3/4"
@@ -78,9 +78,9 @@ function changeRoute(route: string) {
           </div>
 
           <div class="">
-            <p class="text-xl text-white font-bold">Redes sociais</p>
+            <p class="text-xl text-white font-bold text-center">Redes sociais</p>
             <ul
-              class="font-light text-sm flex flex-row items-center justify-around pt-3"
+              class="font-light text-sm flex flex-col md:flex-row space-y-5 md:space-y-0 items-center justify-around pt-3"
             >
               <li>
                 <LogoFacebook />
