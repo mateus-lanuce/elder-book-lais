@@ -16,6 +16,8 @@ function changeRoute(route: string) {
   router.push(route);
 
   SelectedRoute.change(route);
+
+  setTimeout(() => window.scroll(0, 0), 100);
 }
 </script>
 

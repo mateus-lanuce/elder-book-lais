@@ -19,8 +19,11 @@ import StarIcon from "../components/icons/star-icon.vue";
 import formatNumber from "@/utils/formatNumber";
 import NoBgStartIcon from "../components/icons/noBgStart-icon.vue";
 import HalfStarIcon from "../components/icons/halfStar-icon.vue";
+import { useRouter } from "vue-router";
 
 const selectedRoute = useSelectedRoute();
+const router = useRouter();
+
 const courses = ref([]);
 const selectOrder = ref("matriculados");
 
@@ -31,6 +34,14 @@ watchEffect(async () => {
   courses.value = response.data;
   console.log("coursses", courses.value);
 });
+
+function changeRoute(route: string) {
+  route = "/" + route;
+
+  router.push(route);
+
+  setTimeout(() => window.scroll(0, 0), 100);
+}
 </script>
 
 <template>
@@ -105,7 +116,8 @@ watchEffect(async () => {
                 <img
                   v-bind:src="course['capa']"
                   v-bind:alt="course['titulo']"
-                  class="h-full w-full md:h-28 md:w-32 object-cover rounded-lg"
+                  class="h-full w-full md:h-28 md:w-32 object-cover rounded-lg cursor-pointer"
+                  @click="changeRoute('cursos/modulos/' + course['id'])"
                 />
                 <div class="space-y-4 xl:w-96">
                   <p
@@ -174,7 +186,7 @@ watchEffect(async () => {
 
       <!-- parterns -->
       <div class="w-full xl:w-3/4 lg:w-11/12 px-5 lg:px-0 ">
-        <p class="text-themeGreen text-3xl font-semibold mt-10 text-center">
+        <p class="text-themeGreen text-3xl font-semibold mt-10 text-center cursor-pointer" @click="changeRoute('parceiros')">
           Parceiros
         </p>
 
