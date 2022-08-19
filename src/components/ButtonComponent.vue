@@ -11,13 +11,13 @@ const router = useRouter();
 const SelectedRoute = useSelectedRoute();
 
 function changeRoute(route: string) {
-  route = "/" + route;
+  const path = "/" + route;
 
-  router.push(route);
+  router.push(path);
 
   SelectedRoute.change(route);
 
-  setTimeout(() => window.scroll(0, 0), 100);
+  setTimeout(() => window.scroll(0, 0), 100)
 }
 </script>
 
