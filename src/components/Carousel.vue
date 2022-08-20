@@ -33,7 +33,7 @@ import ButtonComponent from "./ButtonComponent.vue";
           </span>
           <img
             src="../assets/hover-image.svg"
-            class="absolute block xl:w-4/6 md:w-3/4 xl:pt-20 -translate-x-1/2 -translate-y-3/4 top-3/4 left-1/2"
+            class="absolute block 2xl:w-4/6 xl:w-7/12 md:w-3/4 xl:pt-20 -translate-x-1/2 -translate-y-3/4 top-3/4 left-1/2"
             alt="..."
           />
         </div>

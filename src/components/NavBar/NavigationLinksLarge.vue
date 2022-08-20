@@ -20,7 +20,7 @@ function changeRoute(route: string) {
 </script>
 
 <template>
-  <ul class="flex space-x-4 xl:space-x-10 md:text-sm xl:text-md font-bold">
+  <ul class="flex space-x-4 2xl:space-x-10 xl:space-x-5 md:text-sm xl:text-md font-bold">
     <li v-for="link in Links" :key="link.name">
       <button
         @click="changeRoute(link.link)"

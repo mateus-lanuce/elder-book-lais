@@ -11,6 +11,7 @@ import NoBgStartIcon from "../components/icons/noBgStart-icon.vue";
 import HalfStarIcon from "../components/icons/halfStar-icon.vue";
 import CalendarIcon from "../components/icons/calendar-icon.vue";
 import type { Courses } from "@/utils/types";
+import { formatDate } from "@/utils/formatDate";
 
 const route = useRoute();
 const course = ref<Courses[0] | null>();
@@ -78,7 +79,7 @@ onBeforeMount(async () => {
           <div class="flex items-center space-x-3">
             <CalendarIcon class="h-6 w-5" />
             <p class="text-themeGray-dark font-bold">
-              Desde {{ course?.criado_em }}
+              Desde {{ formatDate(course?.criado_em) }}
             </p>
           </div>
 
