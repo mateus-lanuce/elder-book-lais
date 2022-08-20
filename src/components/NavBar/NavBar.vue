@@ -36,7 +36,13 @@ const width = computed(() => {
         <LogoElder />
       </div>
 
-      <span class="ml-auto mr-4 cursor-pointer block lg:hidden" @click="openMenu.change()">
+      
+
+      <span class="flex items-center gap-5 ml-auto mr-4 cursor-pointer block lg:hidden" @click="openMenu.change()">
+        <div class="hidden md:inline-block py-1">
+          <NavButton invert > Entrar </NavButton>
+          <NavButton> Cadastrar </NavButton>
+        </div>
         <IconMenu v-if="!openMenu.open" class="w-5 md:w-7" />
         <IconClose v-else class="w-5 md:w-7" />
       </span>
@@ -59,7 +65,8 @@ const width = computed(() => {
       </div>
       <div v-else>
         <!-- use pinia statement for changes -->
-        <NavigationLinksSmall />
+
+          <NavigationLinksSmall/>
       </div>
     </div>
   </nav>
